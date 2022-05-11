@@ -6,7 +6,6 @@
     "build": "rollup -c",
     "clean": "rimraf dist style.css style.css.map",
     "start": "parcel examples/cats/index.html",
-    "prepublishOnly": "yarn run lint && yarn run test && yarn run build",
     "release": "standard-version"
   },
   "main": "dist/index.cjs.js",
