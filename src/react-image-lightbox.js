@@ -62,11 +62,14 @@ class ReactImageLightbox extends Component {
   // Request to transition to the previous image
   static getTransform({ x = 0, y = 0, zoom = 1, width, targetWidth }) {
     let nextX = x;
+    let scaleFactor;
     const windowWidth = getWindowWidth();
     if (width > windowWidth) {
       nextX += (windowWidth - width) / 2;
+      scaleFactor = zoom * (targetWidth / width) - 0.1;
+    } else {
+      scaleFactor = zoom * (targetWidth / width);
     }
-    const scaleFactor = zoom * (targetWidth / width);
 
     return {
       transform: `translate3d(${nextX}px,${y}px,0) scale3d(${scaleFactor},${scaleFactor},1)`,
@@ -565,7 +568,7 @@ class ReactImageLightbox extends Component {
     const currentTime = new Date();
     if (
       currentTime.getTime() - this.lastKeyDownTime <
-        this.props.keyRepeatLimit &&
+      this.props.keyRepeatLimit &&
       keyCode !== KEYS.ESC
     ) {
       return;
@@ -1469,9 +1472,8 @@ class ReactImageLightbox extends Component {
       >
         <div // eslint-disable-line jsx-a11y/no-static-element-interactions
           // Floating modal with closing animations
-          className={`ril-outer ril__outer ril__outerAnimating ${
-            this.props.wrapperClassName
-          } ${isClosing ? 'ril-closing ril__outerClosing' : ''}`}
+          className={`ril-outer ril__outer ril__outerAnimating ${this.props.wrapperClassName
+            } ${isClosing ? 'ril-closing ril__outerClosing' : ''}`}
           style={{
             transition: `opacity ${animationDuration}ms`,
             animationDuration: `${animationDuration}ms`,
@@ -1792,11 +1794,11 @@ ReactImageLightbox.defaultProps = {
   nextLabel: 'Next image',
   nextSrc: null,
   nextSrcThumbnail: null,
-  onAfterOpen: () => {},
-  onImageLoadError: () => {},
-  onImageLoad: () => {},
-  onMoveNextRequest: () => {},
-  onMovePrevRequest: () => {},
+  onAfterOpen: () => { },
+  onImageLoadError: () => { },
+  onImageLoad: () => { },
+  onMoveNextRequest: () => { },
+  onMovePrevRequest: () => { },
   prevLabel: 'Previous image',
   prevSrc: null,
   prevSrcThumbnail: null,
