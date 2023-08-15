@@ -1,6 +1,6 @@
 {
   "name": "react-18-image-lightbox-mobin",
-  "version": "5.1.8",
+  "version": "6.0.0",
   "description": "A lightbox component for React.js",
   "scripts": {
     "build": "rollup -c",
