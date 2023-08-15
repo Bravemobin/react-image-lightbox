@@ -1282,7 +1282,8 @@ class ReactImageLightbox extends Component {
       imageCrossOrigin,
       reactModalProps,
       loader,
-      isVideo
+      isVideo,
+      posterVideo
     } = this.props;
     const {
       zoomLevel,
