@@ -1282,6 +1282,7 @@ class ReactImageLightbox extends Component {
       imageCrossOrigin,
       reactModalProps,
       loader,
+      isVideo
     } = this.props;
     const {
       zoomLevel,
@@ -1394,8 +1395,25 @@ class ReactImageLightbox extends Component {
           </div>
         );
       } else {
-        images.push(
-          <img
+        if (!isVideo) {
+          images.push(
+            <img
+              {...(imageCrossOrigin ? { crossOrigin: imageCrossOrigin } : {})}
+              className={`${imageClass} ril__image`}
+              onDoubleClick={this.handleImageDoubleClick}
+              onWheel={this.handleImageMouseWheel}
+              onDragStart={e => e.preventDefault()}
+              style={imageStyle}
+              src={imageSrc}
+              key={imageSrc + keyEndings[srcType]}
+              alt={
+                typeof imageTitle === 'string' ? imageTitle : translate('Image')
+              }
+              draggable={false}
+            />
+          );
+        } else if (isVideo) {
+          <video
             {...(imageCrossOrigin ? { crossOrigin: imageCrossOrigin } : {})}
             className={`${imageClass} ril__image`}
             onDoubleClick={this.handleImageDoubleClick}
@@ -1403,13 +1421,14 @@ class ReactImageLightbox extends Component {
             onDragStart={e => e.preventDefault()}
             style={imageStyle}
             src={imageSrc}
+            poster={posterVideo}
             key={imageSrc + keyEndings[srcType]}
             alt={
               typeof imageTitle === 'string' ? imageTitle : translate('Image')
             }
             draggable={false}
           />
-        );
+        }
       }
     };
 
@@ -1772,6 +1791,7 @@ ReactImageLightbox.propTypes = {
 
   // custom loader
   loader: PropTypes.node,
+  isVideo: PropTypes.bool,
 };
 
 ReactImageLightbox.defaultProps = {
@@ -1808,6 +1828,7 @@ ReactImageLightbox.defaultProps = {
   zoomOutLabel: 'Zoom out',
   imageLoadErrorMessage: 'This image failed to load',
   loader: undefined,
+  isVideo: false
 };
 
 export default ReactImageLightbox;

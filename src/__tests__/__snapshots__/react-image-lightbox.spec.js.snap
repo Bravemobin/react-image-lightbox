@@ -27,6 +27,7 @@ exports[`Snapshot Testing Lightbox renders properly" 1`] = `
   onImageLoadError={[Function]}
   onMoveNextRequest={[Function]}
   onMovePrevRequest={[Function]}
+  isVideo={false}
   prevLabel="Previous image"
   prevSrc={null}
   prevSrcThumbnail={null}
