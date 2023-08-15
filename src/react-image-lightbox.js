@@ -1792,6 +1792,7 @@ ReactImageLightbox.propTypes = {
   // custom loader
   loader: PropTypes.node,
   isVideo: PropTypes.bool,
+  posterVideo: PropTypes.string
 };
 
 ReactImageLightbox.defaultProps = {
@@ -1828,7 +1829,8 @@ ReactImageLightbox.defaultProps = {
   zoomOutLabel: 'Zoom out',
   imageLoadErrorMessage: 'This image failed to load',
   loader: undefined,
-  isVideo: false
+  isVideo: false,
+  posterVideo: null
 };
 
 export default ReactImageLightbox;

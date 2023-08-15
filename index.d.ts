@@ -16,6 +16,7 @@ export interface ILightBoxProps {
     onAfterOpen?(): void;
     discourageDownloads?: boolean;
     isVideo?: boolean;
+    posterVideo?: string;
     animationDisabled?: boolean;
     animationOnKeyInput?: boolean;
     animationDuration?: number;

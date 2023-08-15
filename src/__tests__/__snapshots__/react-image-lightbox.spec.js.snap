@@ -28,6 +28,7 @@ exports[`Snapshot Testing Lightbox renders properly" 1`] = `
   onMoveNextRequest={[Function]}
   onMovePrevRequest={[Function]}
   isVideo={false}
+  posterVideo={null}
   prevLabel="Previous image"
   prevSrc={null}
   prevSrcThumbnail={null}
